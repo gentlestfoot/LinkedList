@@ -199,9 +199,9 @@
         }
 
         /// <summary>
-        /// 
+        /// Removes the node at the specified position and returns the element from the removed node.
         /// </summary>
-        /// <param name="position"></param>
+        /// <param name="position">Position of element to remove</param>
         /// <returns>Element from removed node</returns>
         /// <exception cref="ApplicationException">List is empty</exception>
         /// <exception cref="ApplicationException">Position cannot be less than 1</exception>
@@ -247,13 +247,17 @@
             return oldElement;
         }
 
+        /// <summary>
+        /// Adds a new node after the node after the specified position
+        /// </summary>
+        /// <param name="element">Element to put in the new node</param>
+        /// <param name="position">Position of node previous to the new node</param>
+        /// <exception cref="ApplicationException">List is empty</exception>
+        /// <exception cref="ApplicationException">Position cannot be less than 1</exception>
+        /// <exception cref="ApplicationException">Position beyond end of list</exception>
         public void AddAfter(T element, int position)
         {
-            if (position == 1)
-            {
-                AddFirst(element);
-            }
-            else if (position == Size)
+            if (position == Size)
             {
                 AddLast(element);
             }
@@ -261,15 +265,34 @@
             {
                 Node<T> nodeAtPosition = GetNode(position);
                 Node<T> newNode = new(element, previousNode: nodeAtPosition, nextNode: nodeAtPosition.Next);
+                nodeAtPosition.Next.Previous = newNode;
                 nodeAtPosition.Next = newNode;
                 Size++;
             }
-            
         }
 
+        /// <summary>
+        /// Adds a new node after the node before the specified position
+        /// </summary>
+        /// <param name="element">Element to put in the new node</param>
+        /// <param name="position">Position of the node after the new node</param>
+        /// <exception cref="ApplicationException">List is empty</exception>
+        /// <exception cref="ApplicationException">Position cannot be less than 1</exception>
+        /// <exception cref="ApplicationException">Position beyond end of list</exception>
         public void AddBefore(T element, int position)
         {
-            Set(element, position - 1);
+            if (position == 1)
+            {
+                AddFirst(element);
+            }
+            else
+            {
+                Node<T> nodeAtPosition = GetNode(position);
+                Node<T> newNode = new(element, previousNode: nodeAtPosition.Previous, nextNode: nodeAtPosition);
+                nodeAtPosition.Previous.Next = newNode;
+                nodeAtPosition.Previous = newNode;
+                Size++;
+            }
         }
 
         #endregion
@@ -312,11 +335,6 @@
         }
 
         #endregion
-
-        public int CompareTo(LinkedList<T>? other)
-        {
-            throw new NotImplementedException();
-        }
 
         /// <summary>
         /// Throws an exception if the list has a size of 0 (is empty).

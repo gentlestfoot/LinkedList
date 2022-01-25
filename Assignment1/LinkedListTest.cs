@@ -1420,1045 +1420,1045 @@ namespace TestLibrary
 
         #region Milestone 3
 
-        //#region Get(element)
-
-
-        ///// <summary>
-        ///// Make sure that Get(element) on an empty list results in an exception.
-        ///// </summary>
-        //[Test]
-        //public void GetByElement_On_EmptyList_throw_exception_Test()
-        //{
-        //    Employee employee = new Employee(1);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    Assert.That(() => list.Get(employee), Throws.Exception.TypeOf<ApplicationException>());
-        //}
-
-        ///// <summary>
-        ///// Ensure that calling Get(element) with element that is not in the list results in an exception.
-        ///// </summary>
-        //[Test]
-        //public void GetByElement_no_match_found_throws_exception_Test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    Employee missingEmployee = new Employee(2);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddFirst(employee);
-
-        //    Assert.That(() => list.Get(missingEmployee), Throws.Exception.TypeOf<ApplicationException>());
-        //}
-
-
-        ///// <summary>
-        ///// Ensure that Get by element returns the element at the correct element.
-        ///// </summary>
-        //[Test]
-        //public void GetByElement_returns_the_element_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee2);
-        //    list.AddFirst(employee1);
-
-        //    Assert.That(list.Get(employee1).CompareTo(employee1), Is.EqualTo(0));
-        //    Assert.That(list.Get(employee2).CompareTo(employee2), Is.EqualTo(0));
-        //}
-
-        ///// <summary>
-        ///// Ensure that calling Get(element) with element that matches multiple list elements returns only one result.
-        ///// </summary>
-        //[Test]
-        //public void GetByElement_Multiple_matches_found_returns_first_match_test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddLast(employee);
-        //    list.AddLast(employee2);
-        //    list.AddLast(employee);
-
-        //    Assert.That(list.Get(employee).CompareTo(employee), Is.EqualTo(0));
-        //}
-        //#endregion
-
-        //#region AddAfter(element, oldElement)
-        ///// <summary>
-        ///// Ensure that calling AddAfter(element) on an empty list will result in an exception.
-        ///// </summary>
-        //[Test]
-        //public void AddAfterByElement_on_EmptyList_throws_exception_test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    Assert.That(() => list.AddAfter(employee, employee), Throws.Exception.TypeOf<ApplicationException>());
-        //}
-
-        ///// <summary>
-        ///// Ensure that passing element that is not in the list to AddAfter(element) results in an exception.
-        ///// </summary>
-        //[Test]
-        //public void AddAfterByElement_no_match_found_throws_exception_Test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    Employee addEmployee = new Employee(2);
-        //    Employee nonListEmployee = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddFirst(employee);
-
-        //    Assert.That(() => list.AddAfter(addEmployee, nonListEmployee), Throws.Exception.TypeOf<ApplicationException>());
-        //}
-
-        ///// <summary>
-        ///// Ensure that passing null value to AddAfter(element, position) results in an exception.
-        ///// </summary>
-        //[Test]
-        //public void AddAfterByElement_when_element_is_null_throws_exception_Test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    Employee addEmployee = new Employee(2);
+        #region Get(element)
+
+
+        /// <summary>
+        /// Make sure that Get(element) on an empty list results in an exception.
+        /// </summary>
+        [Test]
+        public void GetByElement_On_EmptyList_throw_exception_Test()
+        {
+            Employee employee = new Employee(1);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            Assert.That(() => list.Get(employee), Throws.Exception.TypeOf<ApplicationException>());
+        }
+
+        /// <summary>
+        /// Ensure that calling Get(element) with element that is not in the list results in an exception.
+        /// </summary>
+        [Test]
+        public void GetByElement_no_match_found_throws_exception_Test()
+        {
+            Employee employee = new Employee(1);
+            Employee missingEmployee = new Employee(2);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddFirst(employee);
+
+            Assert.That(() => list.Get(missingEmployee), Throws.Exception.TypeOf<ApplicationException>());
+        }
+
+
+        /// <summary>
+        /// Ensure that Get by element returns the element at the correct element.
+        /// </summary>
+        [Test]
+        public void GetByElement_returns_the_element_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee2);
+            list.AddFirst(employee1);
+
+            Assert.That(list.Get(employee1).CompareTo(employee1), Is.EqualTo(0));
+            Assert.That(list.Get(employee2).CompareTo(employee2), Is.EqualTo(0));
+        }
+
+        /// <summary>
+        /// Ensure that calling Get(element) with element that matches multiple list elements returns only one result.
+        /// </summary>
+        [Test]
+        public void GetByElement_Multiple_matches_found_returns_first_match_test()
+        {
+            Employee employee = new Employee(1);
+            Employee employee2 = new Employee(2);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddLast(employee);
+            list.AddLast(employee2);
+            list.AddLast(employee);
+
+            Assert.That(list.Get(employee).CompareTo(employee), Is.EqualTo(0));
+        }
+        #endregion
+
+        #region AddAfter(element, oldElement)
+        /// <summary>
+        /// Ensure that calling AddAfter(element) on an empty list will result in an exception.
+        /// </summary>
+        [Test]
+        public void AddAfterByElement_on_EmptyList_throws_exception_test()
+        {
+            Employee employee = new Employee(1);
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            Assert.That(() => list.AddAfter(employee, employee), Throws.Exception.TypeOf<ApplicationException>());
+        }
+
+        /// <summary>
+        /// Ensure that passing element that is not in the list to AddAfter(element) results in an exception.
+        /// </summary>
+        [Test]
+        public void AddAfterByElement_no_match_found_throws_exception_Test()
+        {
+            Employee employee = new Employee(1);
+            Employee addEmployee = new Employee(2);
+            Employee nonListEmployee = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddFirst(employee);
+
+            Assert.That(() => list.AddAfter(addEmployee, nonListEmployee), Throws.Exception.TypeOf<ApplicationException>());
+        }
+
+        /// <summary>
+        /// Ensure that passing null value to AddAfter(element, position) results in an exception.
+        /// </summary>
+        [Test]
+        public void AddAfterByElement_when_element_is_null_throws_exception_Test()
+        {
+            Employee employee = new Employee(1);
+            Employee addEmployee = new Employee(2);
 
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddFirst(employee);
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddFirst(employee);
 
-        //    Assert.That(() => list.AddAfter(addEmployee, null), Throws.Exception.TypeOf<ArgumentNullException>());
-        //}
-
-
-        ///// <summary>
-        ///// Checking edge case; Ensure that passing the tail element will append to the end of the list without error.
-        ///// </summary>
-        //[Test]
-        //public void AddAfterByElement_using_last_element_on_existingList_updates_tail_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee2);
-        //    Node<Employee> second = list.Head;
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;
-
-        //    list.AddAfter(employee3, list.Tail.Element); // 1, 2, 3... should add to tail, after 2
-
-        //    Node<Employee> third = list.Tail;
-
-        //    Assert.That(list.Get(1), Is.EqualTo(employee1));
-        //    Assert.That(list.Get(2), Is.EqualTo(employee2));
-        //    Assert.That(list.Get(3), Is.EqualTo(employee3));
-
-        //    Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// Make sure element is inserted into proper position.
-        ///// </summary>
-        //[Test]
-        //public void AddAfterByElement_using_head_element_on_existing_list_inserts_between_nodes_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> third = list.Head;
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;
-
-        //    list.AddAfter(employee2, list.Head.Element); // 1, 2, 3, will add 2 after 1
-
-        //    Node<Employee> second = list.Head.Next;
-
-        //    Assert.That(list.Get(1), Is.EqualTo(employee1));
-        //    Assert.That(list.Get(2), Is.EqualTo(employee2));
-        //    Assert.That(list.Get(3), Is.EqualTo(employee3));
-
-        //    Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
-
-        //}
-        ///// <summary>
-        ///// Ensure that passing a element that appears multiple times in the list to AddAfter(element, oldElement) element is inserted after first instance.
-        ///// </summary>
-        //[Test]
-        //public void AddAfterByElement_multiple_match_found_adds_after_first_instance_Test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee addEmployee = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddFirst(employee);
-        //    Node<Employee> fourth = list.Head;
-
-        //    list.AddFirst(employee2);
-        //    Node<Employee> third = list.Head;
-
-        //    list.AddFirst(employee); // order will be: 1, 2, 1
-        //    Node<Employee> first = list.Head;
-
-        //    list.AddAfter(addEmployee, employee); // order should be: 1, 3, 2, 1
-        //    Node<Employee> second = list.Head.Next;
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
-        //    Assert.That(list.Get(4), Is.EqualTo(fourth.Element));
-
-        //    Assert.True(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
-        //}
-        //#endregion
-
-        //#region AddBefore(element, oldElement)
-        ///// <summary>
-        ///// Ensure that calling AddBefore(element) on an empty list will result in an exception.
-        ///// </summary>
-        //[Test]
-        //public void AddBeforeByElement_on_EmptyList_throws_exception_test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    Assert.That(() => list.AddBefore(employee, employee), Throws.Exception.TypeOf<ApplicationException>());
-        //}
-
-        ///// <summary>
-        ///// Ensure that passing element that is not in the list to AddBefore(element) results in an exception.
-        ///// </summary>
-        //[Test]
-        //public void AddBeforeByElement_no_match_found_throws_exception_Test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    Employee addEmployee = new Employee(2);
-        //    Employee nonListEmployee = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddFirst(employee);
-
-        //    Assert.That(() => list.AddBefore(addEmployee, nonListEmployee), Throws.Exception.TypeOf<ApplicationException>());
-        //}
-
-        ///// <summary>
-        ///// Ensure that passing null value to AddBefore(element, position) results in an exception.
-        ///// </summary>
-        //[Test]
-        //public void AddBeforeByElement_when_element_is_null_throws_exception_Test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    Employee addEmployee = new Employee(2);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddFirst(employee);
-
-        //    Assert.That(() => list.AddBefore(addEmployee, null), Throws.Exception.TypeOf<ArgumentNullException>());
-        //}
-
-        ///// <summary>
-        ///// Checking edge case; Ensure that passing the head element will prepend to the beginning of the list without error.
-        ///// </summary>
-        //[Test]
-        //public void AddBeforeByElement_using_head_element_on_existingList_updates_head_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> third = list.Head;
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> second = list.Head;
-
-        //    list.AddBefore(employee3, list.Head.Element); // 1, 2, 3... should add to head, before 2
-
-        //    Node<Employee> first = list.Head;
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
-
-        //    Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// Make sure element is inserted into proper position.
-        ///// </summary>
-        //[Test]
-        //public void AddBeforeByElement_using_tail_element_on_existing_list_inserts_between_nodes_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> third = list.Head;
-
-        //    list.AddFirst(employee2);
-        //    Node<Employee> second = list.Head;
-
-        //    list.AddBefore(employee1, list.Head.Element); // 1, 2, 3, will add 1 before 2
-
-        //    Node<Employee> first = list.Head;
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
-
-        //    Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
-
-        //}
-        ///// <summary>
-        ///// Ensure that passing a element that appears multiple times in the list to AddBefore(element, oldElement) element is before the first instance.
-        ///// </summary>
-        //[Test]
-        //public void AddBeforeByElement_multiple_match_found_adds_before_first_instance_Test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee addEmployee = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddFirst(employee);
-        //    Node<Employee> fourth = list.Head;
-
-        //    list.AddFirst(employee2);
-        //    Node<Employee> third = list.Head;
-
-        //    list.AddFirst(employee); // order will be: 1, 2, 1
-        //    Node<Employee> second = list.Head;
-
-        //    list.AddBefore(addEmployee, employee); // order should be: 3, 1, 2, 1
-        //    Node<Employee> first = list.Head;
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
-        //    Assert.That(list.Get(4), Is.EqualTo(fourth.Element));
-
-        //    Assert.True(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
-        //}
-        //#endregion
-
-        //#region Remove(element)
-        ///// <summary>
-        ///// Make sure that calling Remove(element) on an empty list results in an exception.
-        ///// </summary>
-        //[Test]
-        //public void RemoveByElement_On_EmptyList_throws_exception_Test()
-        //{
-        //    Employee employee = new Employee(1);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    Assert.That(() => list.Remove(employee), Throws.Exception.TypeOf<ApplicationException>());
-        //}
-
-        ///// <summary>
-        ///// Ensure that calling Remove(element) with element that is not in the list results in an exception.
-        ///// </summary>
-        //[Test]
-        //public void RemoveByElement_Not_In_List_throws_exception_Test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    Employee missingEmployee = new Employee(2);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddFirst(employee);
-
-        //    Assert.That(() => list.Remove(missingEmployee), Throws.Exception.TypeOf<ApplicationException>());
-        //}
-
-        ///// <summary>
-        ///// Test Remove(element) on list of one, removes the first node, reduces size and adjusts head/tail.
-        ///// </summary>
-        //[Test]
-        //public void RemoveByElement_on_list_of_1_decreases_size_sets_nulls_head_and_tail_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddFirst(employee1);
-        //    list.Remove(employee1);
-        //    Assert.That(list.Size, Is.EqualTo(0));
-        //    Assert.That(list.Head, Is.Null);
-        //    Assert.That(list.Tail, Is.Null);
-        //}
-
-
-        ///// <summary>
-        ///// RemoveByElementn_list_of_size_2_updates_tail_when_size_1_Test
-        ///// </summary>
-        //[Test]
-        //public void RemoveByElement_list_of_size_2_updates_tail_when_size_1_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee2);
-        //    Node<Employee> second = list.Head;
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;
+            Assert.That(() => list.AddAfter(addEmployee, null), Throws.Exception.TypeOf<ArgumentNullException>());
+        }
+
+
+        /// <summary>
+        /// Checking edge case; Ensure that passing the tail element will append to the end of the list without error.
+        /// </summary>
+        [Test]
+        public void AddAfterByElement_using_last_element_on_existingList_updates_tail_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee2);
+            Node<Employee> second = list.Head;
+
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;
+
+            list.AddAfter(employee3, list.Tail.Element); // 1, 2, 3... should add to tail, after 2
+
+            Node<Employee> third = list.Tail;
+
+            Assert.That(list.Get(1), Is.EqualTo(employee1));
+            Assert.That(list.Get(2), Is.EqualTo(employee2));
+            Assert.That(list.Get(3), Is.EqualTo(employee3));
+
+            Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// Make sure element is inserted into proper position.
+        /// </summary>
+        [Test]
+        public void AddAfterByElement_using_head_element_on_existing_list_inserts_between_nodes_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee3);
+            Node<Employee> third = list.Head;
+
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;
+
+            list.AddAfter(employee2, list.Head.Element); // 1, 2, 3, will add 2 after 1
+
+            Node<Employee> second = list.Head.Next;
+
+            Assert.That(list.Get(1), Is.EqualTo(employee1));
+            Assert.That(list.Get(2), Is.EqualTo(employee2));
+            Assert.That(list.Get(3), Is.EqualTo(employee3));
+
+            Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
+
+        }
+        /// <summary>
+        /// Ensure that passing a element that appears multiple times in the list to AddAfter(element, oldElement) element is inserted after first instance.
+        /// </summary>
+        [Test]
+        public void AddAfterByElement_multiple_match_found_adds_after_first_instance_Test()
+        {
+            Employee employee = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee addEmployee = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddFirst(employee);
+            Node<Employee> fourth = list.Head;
+
+            list.AddFirst(employee2);
+            Node<Employee> third = list.Head;
+
+            list.AddFirst(employee); // order will be: 1, 2, 1
+            Node<Employee> first = list.Head;
+
+            list.AddAfter(addEmployee, employee); // order should be: 1, 3, 2, 1
+            Node<Employee> second = list.Head.Next;
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
+            Assert.That(list.Get(4), Is.EqualTo(fourth.Element));
+
+            Assert.True(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
+        }
+        #endregion
+
+        #region AddBefore(element, oldElement)
+        /// <summary>
+        /// Ensure that calling AddBefore(element) on an empty list will result in an exception.
+        /// </summary>
+        [Test]
+        public void AddBeforeByElement_on_EmptyList_throws_exception_test()
+        {
+            Employee employee = new Employee(1);
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            Assert.That(() => list.AddBefore(employee, employee), Throws.Exception.TypeOf<ApplicationException>());
+        }
+
+        /// <summary>
+        /// Ensure that passing element that is not in the list to AddBefore(element) results in an exception.
+        /// </summary>
+        [Test]
+        public void AddBeforeByElement_no_match_found_throws_exception_Test()
+        {
+            Employee employee = new Employee(1);
+            Employee addEmployee = new Employee(2);
+            Employee nonListEmployee = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddFirst(employee);
+
+            Assert.That(() => list.AddBefore(addEmployee, nonListEmployee), Throws.Exception.TypeOf<ApplicationException>());
+        }
+
+        /// <summary>
+        /// Ensure that passing null value to AddBefore(element, position) results in an exception.
+        /// </summary>
+        [Test]
+        public void AddBeforeByElement_when_element_is_null_throws_exception_Test()
+        {
+            Employee employee = new Employee(1);
+            Employee addEmployee = new Employee(2);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddFirst(employee);
+
+            Assert.That(() => list.AddBefore(addEmployee, null), Throws.Exception.TypeOf<ArgumentNullException>());
+        }
+
+        /// <summary>
+        /// Checking edge case; Ensure that passing the head element will prepend to the beginning of the list without error.
+        /// </summary>
+        [Test]
+        public void AddBeforeByElement_using_head_element_on_existingList_updates_head_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee3);
+            Node<Employee> third = list.Head;
+
+            list.AddFirst(employee1);
+            Node<Employee> second = list.Head;
+
+            list.AddBefore(employee3, list.Head.Element); // 1, 2, 3... should add to head, before 2
+
+            Node<Employee> first = list.Head;
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
+
+            Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// Make sure element is inserted into proper position.
+        /// </summary>
+        [Test]
+        public void AddBeforeByElement_using_tail_element_on_existing_list_inserts_between_nodes_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee3);
+            Node<Employee> third = list.Head;
+
+            list.AddFirst(employee2);
+            Node<Employee> second = list.Head;
+
+            list.AddBefore(employee1, list.Head.Element); // 1, 2, 3, will add 1 before 2
+
+            Node<Employee> first = list.Head;
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
+
+            Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
+
+        }
+        /// <summary>
+        /// Ensure that passing a element that appears multiple times in the list to AddBefore(element, oldElement) element is before the first instance.
+        /// </summary>
+        [Test]
+        public void AddBeforeByElement_multiple_match_found_adds_before_first_instance_Test()
+        {
+            Employee employee = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee addEmployee = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddFirst(employee);
+            Node<Employee> fourth = list.Head;
+
+            list.AddFirst(employee2);
+            Node<Employee> third = list.Head;
+
+            list.AddFirst(employee); // order will be: 1, 2, 1
+            Node<Employee> second = list.Head;
+
+            list.AddBefore(addEmployee, employee); // order should be: 3, 1, 2, 1
+            Node<Employee> first = list.Head;
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
+            Assert.That(list.Get(4), Is.EqualTo(fourth.Element));
+
+            Assert.True(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
+        }
+        #endregion
+
+        #region Remove(element)
+        /// <summary>
+        /// Make sure that calling Remove(element) on an empty list results in an exception.
+        /// </summary>
+        [Test]
+        public void RemoveByElement_On_EmptyList_throws_exception_Test()
+        {
+            Employee employee = new Employee(1);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            Assert.That(() => list.Remove(employee), Throws.Exception.TypeOf<ApplicationException>());
+        }
+
+        /// <summary>
+        /// Ensure that calling Remove(element) with element that is not in the list results in an exception.
+        /// </summary>
+        [Test]
+        public void RemoveByElement_Not_In_List_throws_exception_Test()
+        {
+            Employee employee = new Employee(1);
+            Employee missingEmployee = new Employee(2);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddFirst(employee);
+
+            Assert.That(() => list.Remove(missingEmployee), Throws.Exception.TypeOf<ApplicationException>());
+        }
+
+        /// <summary>
+        /// Test Remove(element) on list of one, removes the first node, reduces size and adjusts head/tail.
+        /// </summary>
+        [Test]
+        public void RemoveByElement_on_list_of_1_decreases_size_sets_nulls_head_and_tail_Test()
+        {
+            Employee employee1 = new Employee(1);
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddFirst(employee1);
+            list.Remove(employee1);
+            Assert.That(list.Size, Is.EqualTo(0));
+            Assert.That(list.Head, Is.Null);
+            Assert.That(list.Tail, Is.Null);
+        }
+
+
+        /// <summary>
+        /// RemoveByElementn_list_of_size_2_updates_tail_when_size_1_Test
+        /// </summary>
+        [Test]
+        public void RemoveByElement_list_of_size_2_updates_tail_when_size_1_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee2);
+            Node<Employee> second = list.Head;
+
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;
 
-        //    var returnedElement = list.Remove(list.Tail.Element); // removes employee 2
-
-        //    Assert.That(returnedElement, Is.EqualTo(employee2));
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-
-        //    // check employee 1 is the only one left and is the head and tail, with a list size of 1
-        //    Assert.True(CheckIntegrityBetweenListOfOneNode(list.Head, first, list.Tail, list.Size));
-        //}
-
-
-        ///// <summary>
-        ///// RemoveByPosition_last_position_on_list_of_size_3_updates_tail_Test
-        ///// </summary>
-        //[Test]
-        //public void RemoveByElement_tail_on_list_of_size_3_updates_tail_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
+            var returnedElement = list.Remove(list.Tail.Element); // removes employee 2
+
+            Assert.That(returnedElement, Is.EqualTo(employee2));
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+
+            // check employee 1 is the only one left and is the head and tail, with a list size of 1
+            Assert.True(CheckIntegrityBetweenListOfOneNode(list.Head, first, list.Tail, list.Size));
+        }
+
+
+        /// <summary>
+        /// RemoveByPosition_last_position_on_list_of_size_3_updates_tail_Test
+        /// </summary>
+        [Test]
+        public void RemoveByElement_tail_on_list_of_size_3_updates_tail_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
 
-        //    list.AddFirst(employee3);
-        //    Node<Employee> last = list.Head;
+            list.AddFirst(employee3);
+            Node<Employee> last = list.Head;
 
-        //    list.AddFirst(employee2);
-        //    Node<Employee> second = list.Head;
+            list.AddFirst(employee2);
+            Node<Employee> second = list.Head;
 
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;
 
-        //    var returnedElement = list.Remove(list.Tail.Element); // removes employee 3
-
-        //    Assert.That(returnedElement, Is.EqualTo(employee3));
-
-        //    // check employee 1 is the head amd employee2 is the tail, with a list size of 2
-        //    Assert.True(CheckIntegrityBetweenListOfTwoNodes(list.Head, first, second, list.Tail, list.Size));
-        //}
+            var returnedElement = list.Remove(list.Tail.Element); // removes employee 3
+
+            Assert.That(returnedElement, Is.EqualTo(employee3));
+
+            // check employee 1 is the head amd employee2 is the tail, with a list size of 2
+            Assert.True(CheckIntegrityBetweenListOfTwoNodes(list.Head, first, second, list.Tail, list.Size));
+        }
 
-        ///// <summary>
-        ///// Ensure that Remove() removes the element at the correct position.
-        ///// </summary>
-        //[Test]
-        //public void RemoveByElement_middle_in_list_of_size_3_updates_pointers_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> last = list.Head;
-
-        //    list.AddFirst(employee2);
-        //    Node<Employee> second = list.Head;
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head; // order: 1, 2, 3
-
-        //    var returnedElement = list.Remove(list.Get(2)); // removes employee2
-
-        //    Assert.That(returnedElement, Is.EqualTo(employee2));
-
-        //    // check employee1 is the head amd employee3 is the tail, with a list size of 2
-        //    Assert.True(CheckIntegrityBetweenListOfTwoNodes(list.Head, first, last, list.Tail, list.Size));
-        //}
-
-
-        ///// <summary>
-        ///// Test Remove(Element) properly updated the head when removing from head
-        ///// </summary>
-        //[Test]
-        //public void RemoveByElement_Head_Updated_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> last = list.Head;
-
-        //    list.AddFirst(employee2);
-        //    Node<Employee> second = list.Head;
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head; //order: 1,2,3
-
-        //    var returnedElement = list.Remove(list.Head.Element); // removes employee 1
-
-        //    Assert.That(returnedElement, Is.EqualTo(employee1));
-
-        //    // check employee2 is the head amd employee3 is the tail, with a list size of 2
-        //    Assert.True(CheckIntegrityBetweenListOfTwoNodes(list.Head, second, last, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// Ensure that calling Remove(element) with element that matches multiple list elements returns only one result.
-        ///// </summary>
-        //[Test]
-        //public void RemoveByElement_multiple_matches_removes_first_match_test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> last = list.Head;
-
-        //    list.AddFirst(employee2);
-        //    Node<Employee> second = list.Head;
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;  // order is: 1, 2, 1
-
-        //    var returnedElement = list.Remove(employee1); // removes first employee 1
-
-        //    Assert.That(returnedElement, Is.EqualTo(employee1));
-
-        //    // check employee2 is the head amd employee1 is the tail, with a list size of 2
-        //    Assert.True(CheckIntegrityBetweenListOfTwoNodes(list.Head, second, last, list.Tail, list.Size));
-        //}
-        //#endregion
+        /// <summary>
+        /// Ensure that Remove() removes the element at the correct position.
+        /// </summary>
+        [Test]
+        public void RemoveByElement_middle_in_list_of_size_3_updates_pointers_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee3);
+            Node<Employee> last = list.Head;
+
+            list.AddFirst(employee2);
+            Node<Employee> second = list.Head;
+
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head; // order: 1, 2, 3
+
+            var returnedElement = list.Remove(list.Get(2)); // removes employee2
+
+            Assert.That(returnedElement, Is.EqualTo(employee2));
+
+            // check employee1 is the head amd employee3 is the tail, with a list size of 2
+            Assert.True(CheckIntegrityBetweenListOfTwoNodes(list.Head, first, last, list.Tail, list.Size));
+        }
+
+
+        /// <summary>
+        /// Test Remove(Element) properly updated the head when removing from head
+        /// </summary>
+        [Test]
+        public void RemoveByElement_Head_Updated_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee3);
+            Node<Employee> last = list.Head;
+
+            list.AddFirst(employee2);
+            Node<Employee> second = list.Head;
+
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head; //order: 1,2,3
+
+            var returnedElement = list.Remove(list.Head.Element); // removes employee 1
+
+            Assert.That(returnedElement, Is.EqualTo(employee1));
+
+            // check employee2 is the head amd employee3 is the tail, with a list size of 2
+            Assert.True(CheckIntegrityBetweenListOfTwoNodes(list.Head, second, last, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// Ensure that calling Remove(element) with element that matches multiple list elements returns only one result.
+        /// </summary>
+        [Test]
+        public void RemoveByElement_multiple_matches_removes_first_match_test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee1);
+            Node<Employee> last = list.Head;
+
+            list.AddFirst(employee2);
+            Node<Employee> second = list.Head;
+
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;  // order is: 1, 2, 1
+
+            var returnedElement = list.Remove(employee1); // removes first employee 1
+
+            Assert.That(returnedElement, Is.EqualTo(employee1));
+
+            // check employee2 is the head amd employee1 is the tail, with a list size of 2
+            Assert.True(CheckIntegrityBetweenListOfTwoNodes(list.Head, second, last, list.Tail, list.Size));
+        }
+        #endregion
 
-        //#region Set(element, oldElement)
-        ///// <summary>
-        ///// Ensure that calling Set(element, oldElement) on an empty list will result in an exception.
-        ///// </summary>
-        //[Test]
-        //public void SetByElement_on_EmptyList_throws_Exception_test()
-        //{
-        //    Employee employee = new Employee(1);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    Assert.That(() => list.Set(employee, employee), Throws.Exception.TypeOf<ApplicationException>());
-        //}
-
-        ///// <summary>
-        ///// Ensure that passing element that is not in the list to Set(element, oldElement) results in an exception.
-        ///// </summary>
-        //[Test]
-        //public void SetByElement_no_match_throws_exception_Test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    Employee updatedEmployee = new Employee(2);
-        //    Employee nonListEmployee = new Employee(3);
+        #region Set(element, oldElement)
+        /// <summary>
+        /// Ensure that calling Set(element, oldElement) on an empty list will result in an exception.
+        /// </summary>
+        [Test]
+        public void SetByElement_on_EmptyList_throws_Exception_test()
+        {
+            Employee employee = new Employee(1);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            Assert.That(() => list.Set(employee, employee), Throws.Exception.TypeOf<ApplicationException>());
+        }
+
+        /// <summary>
+        /// Ensure that passing element that is not in the list to Set(element, oldElement) results in an exception.
+        /// </summary>
+        [Test]
+        public void SetByElement_no_match_throws_exception_Test()
+        {
+            Employee employee = new Employee(1);
+            Employee updatedEmployee = new Employee(2);
+            Employee nonListEmployee = new Employee(3);
 
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddFirst(employee);
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddFirst(employee);
 
-        //    Assert.That(() => list.Set(updatedEmployee, nonListEmployee), Throws.Exception.TypeOf<ApplicationException>());
-        //}
-
-        ///// <summary>
-        ///// Ensure that passing null value to Set(element, oldElement) results in an exception.
-        ///// </summary>
-        //[Test]
-        //public void SetByElement_Null_element_throws_exception_Test()
-        //{
-        //    Employee employee = new Employee(1);
-        //    Employee updatedEmployee = new Employee(2);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.AddFirst(employee);
-
-        //    Assert.That(() => list.Set(updatedEmployee, null), Throws.Exception.TypeOf<ArgumentNullException>());
-        //}
-
-        ///// <summary>
-        ///// Test Set(element, oldElement) updates first element on list of one.
-        ///// </summary>
-        //[Test]
-        //public void SetByElement_updates_element_returns_old_value_maintains_pointers_change_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
+            Assert.That(() => list.Set(updatedEmployee, nonListEmployee), Throws.Exception.TypeOf<ApplicationException>());
+        }
+
+        /// <summary>
+        /// Ensure that passing null value to Set(element, oldElement) results in an exception.
+        /// </summary>
+        [Test]
+        public void SetByElement_Null_element_throws_exception_Test()
+        {
+            Employee employee = new Employee(1);
+            Employee updatedEmployee = new Employee(2);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.AddFirst(employee);
+
+            Assert.That(() => list.Set(updatedEmployee, null), Throws.Exception.TypeOf<ArgumentNullException>());
+        }
+
+        /// <summary>
+        /// Test Set(element, oldElement) updates first element on list of one.
+        /// </summary>
+        [Test]
+        public void SetByElement_updates_element_returns_old_value_maintains_pointers_change_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
 
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;
-
-        //    var returnedElement = list.Set(employee2,employee1); // set first to employee 2
-
-        //    Assert.That(returnedElement, Is.EqualTo(employee1));
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-
-        //    // check employee2 is the head amd employee2 is the tail, with a list size of 1
-        //    Assert.True(CheckIntegrityBetweenListOfOneNode(list.Head, first, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// Ensure that passing a element that appears multiple times in the list to Set(element, oldElement) only first instance is replaced.
-        ///// </summary>
-        //[Test]
-        //public void SetByElement_Multiple_Matching_changes_first_instance_only_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;
+
+            var returnedElement = list.Set(employee2, employee1); // set first to employee 2
+
+            Assert.That(returnedElement, Is.EqualTo(employee1));
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+
+            // check employee2 is the head amd employee2 is the tail, with a list size of 1
+            Assert.True(CheckIntegrityBetweenListOfOneNode(list.Head, first, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// Ensure that passing a element that appears multiple times in the list to Set(element, oldElement) only first instance is replaced.
+        /// </summary>
+        [Test]
+        public void SetByElement_Multiple_Matching_changes_first_instance_only_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
 
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
+            LinkedList<Employee> list = new LinkedList<Employee>();
 
-        //    list.AddFirst(employee1);
-        //    Node<Employee> third = list.Head;
+            list.AddFirst(employee1);
+            Node<Employee> third = list.Head;
 
-        //    list.AddFirst(employee2);
-        //    Node<Employee> second = list.Head;
+            list.AddFirst(employee2);
+            Node<Employee> second = list.Head;
 
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;  // order is: 1, 2, 1
-
-        //    var returnedElement = list.Set(employee3, employee1); // sets head to employee3
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
-
-        //    Assert.That(returnedElement, Is.EqualTo(employee1));
-
-        //    // check employee3 is the head amd employee1 is the tail, with a list size of 2
-        //    Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head,first, second, third, list.Tail, list.Size));
-        //}
-        //#endregion
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;  // order is: 1, 2, 1
+
+            var returnedElement = list.Set(employee3, employee1); // sets head to employee3
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
+
+            Assert.That(returnedElement, Is.EqualTo(employee1));
+
+            // check employee3 is the head amd employee1 is the tail, with a list size of 2
+            Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
+        }
+        #endregion
 
 
-        //#region Insert()
-        ///// <summary>
-        ///// Test that Insert() can insert into an empty list and update the head/tail
-        ///// </summary>
-        //[Test]
-        //public void Insert_EmptyList_increases_size_updates_head_and_tail_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
+        #region Insert()
+        /// <summary>
+        /// Test that Insert() can insert into an empty list and update the head/tail
+        /// </summary>
+        [Test]
+        public void Insert_EmptyList_increases_size_updates_head_and_tail_Test()
+        {
+            Employee employee1 = new Employee(1);
+            LinkedList<Employee> list = new LinkedList<Employee>();
 
-        //    Assert.That(list.Size, Is.EqualTo(0));
+            Assert.That(list.Size, Is.EqualTo(0));
 
-        //    list.Insert(employee1);
-        //    Node<Employee> first = list.Head;  // order is: 1
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-
-        //    // check employee1 is the head amd employee1 is the tail, with a list size of 1
-        //    Assert.True(CheckIntegrityBetweenListOfOneNode(list.Head, first, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// Test that Insert() adds an element to the list in ascending order spot
-        ///// </summary>
-        //[Test]
-        //public void Insert_Adds_inbetween_head_and_tail_when_value_between_Test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
+            list.Insert(employee1);
+            Node<Employee> first = list.Head;  // order is: 1
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+
+            // check employee1 is the head amd employee1 is the tail, with a list size of 1
+            Assert.True(CheckIntegrityBetweenListOfOneNode(list.Head, first, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// Test that Insert() adds an element to the list in ascending order spot
+        /// </summary>
+        [Test]
+        public void Insert_Adds_inbetween_head_and_tail_when_value_between_Test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
 
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> third = list.Head;
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee3);
+            Node<Employee> third = list.Head;
 
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;  // order is: 1, 3
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;  // order is: 1, 3
 
-        //    list.Insert(employee2);
-        //    Node<Employee> second = list.Head.Next;  // order is: 1,2,3
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
-
-        //    // check employee3 is the head amd employee1 is the tail, with a list size of 3
-        //    Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// Edge case; check that Insert() will insert into the head position without error.
-        ///// </summary>
-        //[Test]
-        //public void Insert_at_Head_Position_when_smallest_list_value_Test()
-        //{
-
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> third = list.Head;
-
-        //    list.AddFirst(employee2);
-        //    Node<Employee> second = list.Head;  // order is: 2, 3
-
-        //    list.Insert(employee1);
-        //    Node<Employee> first = list.Head;  // order is: 1,2,3
+            list.Insert(employee2);
+            Node<Employee> second = list.Head.Next;  // order is: 1,2,3
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
+
+            // check employee3 is the head amd employee1 is the tail, with a list size of 3
+            Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// Edge case; check that Insert() will insert into the head position without error.
+        /// </summary>
+        [Test]
+        public void Insert_at_Head_Position_when_smallest_list_value_Test()
+        {
+
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee3);
+            Node<Employee> third = list.Head;
+
+            list.AddFirst(employee2);
+            Node<Employee> second = list.Head;  // order is: 2, 3
+
+            list.Insert(employee1);
+            Node<Employee> first = list.Head;  // order is: 1,2,3
 
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
 
-        //    // check employee1 is the head amd employee3 is the tail, with a list size of 3
-        //    Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// Edge case; check that Insert() will insert into the tail position without error.
-        ///// </summary>
-        //[Test]
-        //public void InsertTailPositionTest()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee2);
-        //    Node<Employee> second = list.Head; 
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;   // order is: 1, 2
-
-        //    list.Insert(employee3);
-        //    Node<Employee> third = list.Tail;// order is: 1,2,3
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
-
-        //    // check employee1 is the head amd employee3 is the tail, with a list size of 3
-        //    Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// Test that Insert() can handle inserting when duplicates exist in the list already.
-        ///// </summary>
-        //[Test]
-        //public void Insert_duplicate_values_in_list_still_maintain_order_test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> fourth = list.Head;
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> third = list.Head;
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;   // order is: 1, 3, 3
-
-        //    list.Insert(employee2);
-        //    Node<Employee> second = list.Head.Next;   // order is: 1, 2, 3, 3
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
-        //    Assert.That(list.Get(4), Is.EqualTo(fourth.Element));
-
-        //    // check employee1 is the head amd employee3 is the tail, with a list size of 4
-        //    Assert.True(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// Test that Insert() can handle inserting when value to add exists in the list already.
-        ///// </summary>
-        //[Test]
-        //public void Insert_new_value_exists_in_list_adds_in_order_test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> fourth = list.Head;
-
-        //    list.AddFirst(employee2);
-        //    Node<Employee> third = list.Head;
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;   // order is: 1, 2, 3
-
-        //    list.Insert(employee2);
-        //    Node<Employee> second = list.Head.Next;   // order is: 1, 2, 2, 3,
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
-        //    Assert.That(list.Get(4), Is.EqualTo(fourth.Element));
-
-        //    // check employee1 is the head amd employee3 is the tail, with a list size of 4
-        //    Assert.True(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        /////Test that Insert() can handle inserting when list is not ordered
-        ///// </summary>
-        //[Test]
-        //public void Insert_new_value_in_non_ordered_list_assigns_in_natural_order_test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> fourth = list.Head;
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> third = list.Head;
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> first = list.Head;   // order is: 1, 3, 1
-
-        //    list.Insert(employee2);
-        //    Node<Employee> second = list.Head.Next;   // order is: 1, 2, 3, 1
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
-        //    Assert.That(list.Get(4), Is.EqualTo(fourth.Element));
-
-        //    // check employee1 is the head amd employee1 is the tail, with a list size of 4
-        //    Assert.True(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        /////Test that Insert() can handle inserting when list is not ordered, largest number is first
-        ///// </summary>
-        //[Test]
-        //public void Insert_new_value_in_non_ordered_list_assigns_in_natural_order_largest_number_is_first_test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddFirst(employee1);
-        //    Node<Employee> third = list.Head;
-
-        //    list.AddFirst(employee3);
-        //    Node<Employee> second = list.Head;   // order is: 3, 1
-
-        //    list.Insert(employee2);
-        //    Node<Employee> first = list.Head;   // order is: 2, 3, 1
-
-        //    Assert.That(list.Get(1), Is.EqualTo(first.Element));
-        //    Assert.That(list.Get(2), Is.EqualTo(second.Element));
-        //    Assert.That(list.Get(3), Is.EqualTo(third.Element));
-
-        //    // check employee1 is the head amd employee1 is the tail, with a list size of 4
-        //    Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
-        //}
-        //#endregion
-
-
-        //#region SortAscending()
-        ///// <summary>
-        ///// We run SortAscending() on an empty list, no exceptions should be thrown.
-        ///// </summary>
-        //[Test]
-        //public void SortAscending_on_EmptyList_does_not_throw_exception_test()
-        //{
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.SortAscending();
-        //    Assert.That(list.IsEmpty());
-        //    Assert.That(list.Head, Is.Null);
-        //    Assert.That(list.Tail, Is.Null);
-        //}
-
-        ///// <summary>
-        ///// We run SortAscending() on a list of 1, no changes should be made.
-        ///// </summary>
-        //[Test]
-        //public void SortAscending_on_list_of_1_does_not_change_anything_test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-        //    list.Insert(employee1);
-        //    list.SortAscending();
-        //    Assert.That(list.GetFirst(), Is.EqualTo(employee1));
-
-        //    Node<Employee> first = list.Head;
-        //    Assert.That(CheckIntegrityBetweenListOfOneNode(list.Head, first, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// We run SortAscending() on a sorted list of 2, no changes should be made.
-        ///// </summary>
-        //[Test]
-        //public void SortAscending_on_sorted_list_of_2_does_not_change_anything_test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.Insert(employee1);
-        //    list.Insert(employee2);
-        //    list.SortAscending();
-
-        //    Assert.That(list.GetFirst(), Is.EqualTo(employee1));
-        //    Assert.That(list.GetLast(), Is.EqualTo(employee2));
-
-        //    Node<Employee> first = list.Head;
-        //    Node<Employee> second = list.Head.Next;
-
-        //    Assert.That(CheckIntegrityBetweenListOfTwoNodes(list.Head, first, second, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// We run SortAscending() on a sorted list of 3, no changes should be made.
-        ///// </summary>
-        //[Test]
-        //public void SortAscending_on_sorted_list_of_3_does_not_change_anything_test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.Insert(employee1);
-        //    list.Insert(employee2);
-        //    list.Insert(employee3);
-
-        //    list.SortAscending();
-
-        //    Assert.That(list.GetFirst(), Is.EqualTo(employee1));
-        //    Assert.That(list.Get(2), Is.EqualTo(employee2));
-        //    Assert.That(list.GetLast(), Is.EqualTo(employee3));
-
-        //    Node<Employee> first = list.Head;
-        //    Node<Employee> second = list.Head.Next;
-        //    Node<Employee> third = list.Tail;
-
-        //    Assert.That(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// We run SortAscending() on an unsorted list of 2, should sort the values
-        ///// </summary>
-        //[Test]
-        //public void SortAscending_on_unsorted_list_of_2_sorts_ascending_test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddLast(employee1);
-        //    list.AddFirst(employee2);
-
-        //    list.SortAscending();
-
-        //    Assert.That(list.GetFirst(), Is.EqualTo(employee1));
-        //    Assert.That(list.GetLast(), Is.EqualTo(employee2));
-
-        //    Node<Employee> first = list.Head;
-        //    Node<Employee> second = list.Head.Next;
-
-        //    Assert.That(CheckIntegrityBetweenListOfTwoNodes(list.Head, first, second, list.Tail, list.Size));
-        //}
-
-        ///// <summary>
-        ///// We run SortAscending() on an unsorted list of 3, should sort the values
-        ///// </summary>
-        //[Test]
-        //public void SortAscending_on_Unsorted_list_of_3_sorts_ascending_test()
-        //{
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddLast(employee1);
-        //    list.AddFirst(employee3);
-        //    list.AddFirst(employee2);
-        //    list.SortAscending();
-
-        //    Assert.That(list.GetFirst(), Is.EqualTo(employee1));
-        //    Assert.That(list.Get(2), Is.EqualTo(employee2));
-        //    Assert.That(list.GetLast(), Is.EqualTo(employee3));
-
-        //    Node<Employee> first = list.Head;
-        //    Node<Employee> second = list.Head.Next;
-        //    Node<Employee> third = list.Tail;
-
-        //    Assert.That(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
-
-        //}
-
-        ///// <summary>
-        ///// We run SortAscending() on a large unsorted list with duplicates, should sort the values
-        ///// </summary>
-        //[Test]
-        //public void SortAscending_on_large_Unsorted_list_with_duplicates_sorts_ascending_test()
-        //{
-
-        //    Employee employee1 = new Employee(1);
-        //    Employee employee2 = new Employee(2);
-        //    Employee employee3 = new Employee(3);
-
-        //    LinkedList<Employee> list = new LinkedList<Employee>();
-
-        //    list.AddLast(employee1);
-        //    list.AddFirst(employee3);
-        //    list.AddFirst(employee2);
-        //    list.AddFirst(employee3);// order was: 3, 2, 3, 1
-
-        //    list.SortAscending();
-
-        //    Node<Employee> first = list.Head;
-        //    Node<Employee> second = list.Head.Next;
-        //    Node<Employee> third = list.Tail.Previous; 
-        //    Node<Employee> fourth = list.Tail;
-
-        //    Assert.That(list.GetFirst(), Is.EqualTo(employee1)); // 1, 2, 3, 3
-        //    Assert.That(list.Get(2), Is.EqualTo(employee2));
-        //    Assert.That(list.Get(3), Is.EqualTo(employee3));
-        //    Assert.That(list.GetLast(), Is.EqualTo(employee3));
-
-        //    Assert.That(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
-
-        //}
-        //#endregion
+            // check employee1 is the head amd employee3 is the tail, with a list size of 3
+            Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// Edge case; check that Insert() will insert into the tail position without error.
+        /// </summary>
+        [Test]
+        public void InsertTailPositionTest()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee2);
+            Node<Employee> second = list.Head;
+
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;   // order is: 1, 2
+
+            list.Insert(employee3);
+            Node<Employee> third = list.Tail;// order is: 1,2,3
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
+
+            // check employee1 is the head amd employee3 is the tail, with a list size of 3
+            Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// Test that Insert() can handle inserting when duplicates exist in the list already.
+        /// </summary>
+        [Test]
+        public void Insert_duplicate_values_in_list_still_maintain_order_test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee3);
+            Node<Employee> fourth = list.Head;
+
+            list.AddFirst(employee3);
+            Node<Employee> third = list.Head;
+
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;   // order is: 1, 3, 3
+
+            list.Insert(employee2);
+            Node<Employee> second = list.Head.Next;   // order is: 1, 2, 3, 3
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
+            Assert.That(list.Get(4), Is.EqualTo(fourth.Element));
+
+            // check employee1 is the head amd employee3 is the tail, with a list size of 4
+            Assert.True(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// Test that Insert() can handle inserting when value to add exists in the list already.
+        /// </summary>
+        [Test]
+        public void Insert_new_value_exists_in_list_adds_in_order_test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee3);
+            Node<Employee> fourth = list.Head;
+
+            list.AddFirst(employee2);
+            Node<Employee> third = list.Head;
+
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;   // order is: 1, 2, 3
+
+            list.Insert(employee2);
+            Node<Employee> second = list.Head.Next;   // order is: 1, 2, 2, 3,
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
+            Assert.That(list.Get(4), Is.EqualTo(fourth.Element));
+
+            // check employee1 is the head amd employee3 is the tail, with a list size of 4
+            Assert.True(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        ///Test that Insert() can handle inserting when list is not ordered
+        /// </summary>
+        [Test]
+        public void Insert_new_value_in_non_ordered_list_assigns_in_natural_order_test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee1);
+            Node<Employee> fourth = list.Head;
+
+            list.AddFirst(employee3);
+            Node<Employee> third = list.Head;
+
+            list.AddFirst(employee1);
+            Node<Employee> first = list.Head;   // order is: 1, 3, 1
+
+            list.Insert(employee2);
+            Node<Employee> second = list.Head.Next;   // order is: 1, 2, 3, 1
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
+            Assert.That(list.Get(4), Is.EqualTo(fourth.Element));
+
+            // check employee1 is the head amd employee1 is the tail, with a list size of 4
+            Assert.True(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        ///Test that Insert() can handle inserting when list is not ordered, largest number is first
+        /// </summary>
+        [Test]
+        public void Insert_new_value_in_non_ordered_list_assigns_in_natural_order_largest_number_is_first_test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddFirst(employee1);
+            Node<Employee> third = list.Head;
+
+            list.AddFirst(employee3);
+            Node<Employee> second = list.Head;   // order is: 3, 1
+
+            list.Insert(employee2);
+            Node<Employee> first = list.Head;   // order is: 2, 3, 1
+
+            Assert.That(list.Get(1), Is.EqualTo(first.Element));
+            Assert.That(list.Get(2), Is.EqualTo(second.Element));
+            Assert.That(list.Get(3), Is.EqualTo(third.Element));
+
+            // check employee1 is the head amd employee1 is the tail, with a list size of 4
+            Assert.True(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
+        }
+        #endregion
+
+
+        #region SortAscending()
+        /// <summary>
+        /// We run SortAscending() on an empty list, no exceptions should be thrown.
+        /// </summary>
+        [Test]
+        public void SortAscending_on_EmptyList_does_not_throw_exception_test()
+        {
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.SortAscending();
+            Assert.That(list.IsEmpty());
+            Assert.That(list.Head, Is.Null);
+            Assert.That(list.Tail, Is.Null);
+        }
+
+        /// <summary>
+        /// We run SortAscending() on a list of 1, no changes should be made.
+        /// </summary>
+        [Test]
+        public void SortAscending_on_list_of_1_does_not_change_anything_test()
+        {
+            Employee employee1 = new Employee(1);
+            LinkedList<Employee> list = new LinkedList<Employee>();
+            list.Insert(employee1);
+            list.SortAscending();
+            Assert.That(list.GetFirst(), Is.EqualTo(employee1));
+
+            Node<Employee> first = list.Head;
+            Assert.That(CheckIntegrityBetweenListOfOneNode(list.Head, first, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// We run SortAscending() on a sorted list of 2, no changes should be made.
+        /// </summary>
+        [Test]
+        public void SortAscending_on_sorted_list_of_2_does_not_change_anything_test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.Insert(employee1);
+            list.Insert(employee2);
+            list.SortAscending();
+
+            Assert.That(list.GetFirst(), Is.EqualTo(employee1));
+            Assert.That(list.GetLast(), Is.EqualTo(employee2));
+
+            Node<Employee> first = list.Head;
+            Node<Employee> second = list.Head.Next;
+
+            Assert.That(CheckIntegrityBetweenListOfTwoNodes(list.Head, first, second, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// We run SortAscending() on a sorted list of 3, no changes should be made.
+        /// </summary>
+        [Test]
+        public void SortAscending_on_sorted_list_of_3_does_not_change_anything_test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.Insert(employee1);
+            list.Insert(employee2);
+            list.Insert(employee3);
+
+            list.SortAscending();
+
+            Assert.That(list.GetFirst(), Is.EqualTo(employee1));
+            Assert.That(list.Get(2), Is.EqualTo(employee2));
+            Assert.That(list.GetLast(), Is.EqualTo(employee3));
+
+            Node<Employee> first = list.Head;
+            Node<Employee> second = list.Head.Next;
+            Node<Employee> third = list.Tail;
+
+            Assert.That(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// We run SortAscending() on an unsorted list of 2, should sort the values
+        /// </summary>
+        [Test]
+        public void SortAscending_on_unsorted_list_of_2_sorts_ascending_test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddLast(employee1);
+            list.AddFirst(employee2);
+
+            list.SortAscending();
+
+            Assert.That(list.GetFirst(), Is.EqualTo(employee1));
+            Assert.That(list.GetLast(), Is.EqualTo(employee2));
+
+            Node<Employee> first = list.Head;
+            Node<Employee> second = list.Head.Next;
+
+            Assert.That(CheckIntegrityBetweenListOfTwoNodes(list.Head, first, second, list.Tail, list.Size));
+        }
+
+        /// <summary>
+        /// We run SortAscending() on an unsorted list of 3, should sort the values
+        /// </summary>
+        [Test]
+        public void SortAscending_on_Unsorted_list_of_3_sorts_ascending_test()
+        {
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddLast(employee1);
+            list.AddFirst(employee3);
+            list.AddFirst(employee2);
+            list.SortAscending();
+
+            Assert.That(list.GetFirst(), Is.EqualTo(employee1));
+            Assert.That(list.Get(2), Is.EqualTo(employee2));
+            Assert.That(list.GetLast(), Is.EqualTo(employee3));
+
+            Node<Employee> first = list.Head;
+            Node<Employee> second = list.Head.Next;
+            Node<Employee> third = list.Tail;
+
+            Assert.That(CheckIntegrityBetweenListOfThreeNodes(list.Head, first, second, third, list.Tail, list.Size));
+
+        }
+
+        /// <summary>
+        /// We run SortAscending() on a large unsorted list with duplicates, should sort the values
+        /// </summary>
+        [Test]
+        public void SortAscending_on_large_Unsorted_list_with_duplicates_sorts_ascending_test()
+        {
+
+            Employee employee1 = new Employee(1);
+            Employee employee2 = new Employee(2);
+            Employee employee3 = new Employee(3);
+
+            LinkedList<Employee> list = new LinkedList<Employee>();
+
+            list.AddLast(employee1);
+            list.AddFirst(employee3);
+            list.AddFirst(employee2);
+            list.AddFirst(employee3);// order was: 3, 2, 3, 1
+
+            list.SortAscending();
+
+            Node<Employee> first = list.Head;
+            Node<Employee> second = list.Head.Next;
+            Node<Employee> third = list.Tail.Previous;
+            Node<Employee> fourth = list.Tail;
+
+            Assert.That(list.GetFirst(), Is.EqualTo(employee1)); // 1, 2, 3, 3
+            Assert.That(list.Get(2), Is.EqualTo(employee2));
+            Assert.That(list.Get(3), Is.EqualTo(employee3));
+            Assert.That(list.GetLast(), Is.EqualTo(employee3));
+
+            Assert.That(CheckIntegrityBetweenListOfFourNodes(list.Head, first, second, third, fourth, list.Tail, list.Size));
+
+        }
+        #endregion
 
         #endregion
 
