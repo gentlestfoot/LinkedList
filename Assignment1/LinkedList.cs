@@ -257,18 +257,7 @@
         /// <exception cref="ApplicationException">Position beyond end of list</exception>
         public void AddAfter(T element, int position)
         {
-            if (position == Size)
-            {
-                AddLast(element);
-            }
-            else
-            {
-                Node<T> nodeAtPosition = GetNode(position);
-                Node<T> newNode = new(element, previousNode: nodeAtPosition, nextNode: nodeAtPosition.Next);
-                nodeAtPosition.Next.Previous = newNode;
-                nodeAtPosition.Next = newNode;
-                Size++;
-            }
+            AddAfterNode(element, GetNode(position));
         }
 
         /// <summary>
@@ -281,37 +270,38 @@
         /// <exception cref="ApplicationException">Position beyond end of list</exception>
         public void AddBefore(T element, int position)
         {
-            if (position == 1)
-            {
-                AddFirst(element);
-            }
-            else
-            {
-                Node<T> nodeAtPosition = GetNode(position);
-                Node<T> newNode = new(element, previousNode: nodeAtPosition.Previous, nextNode: nodeAtPosition);
-                nodeAtPosition.Previous.Next = newNode;
-                nodeAtPosition.Previous = newNode;
-                Size++;
-            }
+            AddBeforeNode(element, GetNode(position));
         }
 
         #endregion
 
         #region Milestone 3
 
-        public T Get(T element)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public T Get(T element) => GetNode(element).Element;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="oldElement"></param>
         public void AddAfter(T element, T oldElement)
         {
-            throw new NotImplementedException();
+            AddAfterNode(element, GetNode(oldElement));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="oldElement"></param>
         public void AddBefore(T element, T oldElement)
         {
-            throw new NotImplementedException();
+            AddBeforeNode(element, GetNode(oldElement));
         }
 
         public T Remove(T element)
@@ -380,6 +370,57 @@
             }
 
             return currentNode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        /// <exception cref="ApplicationException">List is empty</exception>
+        /// <exception cref="ApplicationException">Element not found in list</exception>
+        private Node<T> GetNode(T element)
+        {
+            EmptyListException();
+
+            Node<T> currentNode = Head;
+
+            while (!currentNode.Element.Equals(element))
+            {
+                currentNode = currentNode.Next ?? throw new ApplicationException("Element not found in list");
+            }
+
+            return currentNode;
+        }
+
+        private void AddAfterNode(T element, Node<T> existingNode)
+        {
+            if(existingNode == Tail)
+            {
+                AddLast(element);
+            }
+            else
+            {
+                Node<T> newNode = new(element, previousNode: existingNode, nextNode: existingNode.Next);
+                existingNode.Next.Previous = newNode;
+                existingNode.Next = newNode;
+                Size++;
+            }
+        }
+
+        private void AddBeforeNode(T element, Node<T> existingNode)
+        {
+            if (existingNode == Head)
+            {
+                AddFirst(element);
+            }
+            else
+            {
+                Node<T> newNode = new(element, previousNode: existingNode.Previous, nextNode: existingNode);
+                existingNode.Previous.Next = newNode;
+                existingNode.Previous = newNode;
+                Size++;
+            }
         }
     }
 }
