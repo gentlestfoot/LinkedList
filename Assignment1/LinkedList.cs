@@ -257,7 +257,8 @@
         /// <exception cref="ApplicationException">Position beyond end of list</exception>
         public void AddAfter(T element, int position)
         {
-            AddAfterNode(element, GetNode(position));
+            Node<T> existingNode = GetNode(position);
+            AddNode(existingNode, element, existingNode.Next);
         }
 
         /// <summary>
@@ -270,7 +271,8 @@
         /// <exception cref="ApplicationException">Position beyond end of list</exception>
         public void AddBefore(T element, int position)
         {
-            AddBeforeNode(element, GetNode(position));
+            Node<T> existingNode = GetNode(position);
+            AddNode(existingNode.Previous, element, existingNode);
         }
 
         #endregion
@@ -291,7 +293,8 @@
         /// <param name="oldElement"></param>
         public void AddAfter(T element, T oldElement)
         {
-            AddAfterNode(element, GetNode(oldElement));
+            Node<T> existingNode = GetNode(oldElement);
+            AddNode(existingNode, element, existingNode.Next);
         }
 
         /// <summary>
@@ -301,27 +304,97 @@
         /// <param name="oldElement"></param>
         public void AddBefore(T element, T oldElement)
         {
-            AddBeforeNode(element, GetNode(oldElement));
+            Node<T> existingNode = GetNode(oldElement);
+            AddNode(existingNode.Previous, element, existingNode);
         }
 
         public T Remove(T element)
         {
-            throw new NotImplementedException();
+            Node<T> target = GetNode(element);
+
+            if (target == Head)
+            {
+                RemoveFirst();
+            }
+            else if(target == Tail)
+            {
+                RemoveLast();
+            }
+            else
+            {
+                target.Previous.Next = target.Next;
+                target.Next.Previous = target.Previous;
+                Size--;
+            }
+
+            return target.Element;
         }
 
         public T Set(T element, T oldElement)
         {
-            throw new NotImplementedException();
+            Node<T> target = GetNode(oldElement);
+            T previousElement = target.Element;
+
+            target.Element = element;
+
+            return previousElement;
         }
 
+        /// <summary>
+        /// Inserts an element in ascending
+        /// </summary>
+        /// <param name="element"></param>
         public void Insert(T element)
         {
-            throw new NotImplementedException();
+            if(Size == 0)
+            {
+                AddFirst(element);
+            }
+            else
+            {
+                Node<T> currentNode = Head;
+
+                while (currentNode != null && currentNode.Element.CompareTo(element) < 0)
+                {
+                    currentNode = currentNode.Next;
+                }
+
+                if (currentNode == null)
+                {
+                    AddLast(element);
+                }
+                else
+                {
+                    AddNode(currentNode.Previous, element, currentNode);
+                }
+            }
         }
 
+        /// <summary>
+        /// Sorts the list elements in ascending order
+        /// </summary>
         public void SortAscending()
         {
-            throw new NotImplementedException();
+            bool unsorted = false;
+
+            for(int i = 1; i < Size; i++)
+            {
+                Node<T> currentNode = GetNode(i);
+
+                if(currentNode.Element.CompareTo(currentNode.Next.Element) > 0)
+                {
+                    T otherElement = currentNode.Element;
+                    currentNode.Element = currentNode.Next.Element;
+                    currentNode.Next.Element = otherElement;
+
+                    unsorted = true;
+                }
+            }
+
+            if (unsorted)
+            {
+                SortAscending();
+            }
         }
 
         #endregion
@@ -341,7 +414,7 @@
         /// <summary>
         /// Gets a node from the list by position
         /// </summary>
-        /// <param name="position"></param>
+        /// <param name="position">Position of node to get</param>
         /// <returns>Node at specified position</returns>
         /// <exception cref="ApplicationException">List is empty</exception>
         /// <exception cref="ApplicationException">Position cannot be less than 1</exception>
@@ -373,15 +446,21 @@
         }
 
         /// <summary>
-        /// 
+        /// Get a node from the list by element.
         /// </summary>
-        /// <param name="element"></param>
-        /// <returns></returns>
+        /// <param name="element">Element to find in list</param>
+        /// <returns>First node containing the specified element</returns>
         /// <exception cref="ApplicationException">List is empty</exception>
         /// <exception cref="ApplicationException">Element not found in list</exception>
+        /// <exception cref="ArgumentException">Element cannot be null</exception>
         private Node<T> GetNode(T element)
         {
             EmptyListException();
+
+            if (element == null)
+            {
+                throw new ArgumentNullException(nameof(element));
+            }
 
             Node<T> currentNode = Head;
 
@@ -393,32 +472,28 @@
             return currentNode;
         }
 
-        private void AddAfterNode(T element, Node<T> existingNode)
-        {
-            if(existingNode == Tail)
+        /// <summary>
+        /// Adds the element to a new node between the two specified nodes
+        /// </summary>
+        /// <param name="nodeBefore">The node prior to the new node</param>
+        /// <param name="element">The element to be contained in the node</param>
+        /// <param name="nodeAfter">The node after the new node</param>
+        /// <exception cref="ArgumentNullException">Element cannot be null</exception>
+        private void AddNode(Node<T>? nodeBefore, T element, Node<T>? nodeAfter)
+        {       
+            if (nodeBefore == null)
+            {
+                AddFirst(element);
+            }
+            else if(nodeAfter == null)
             {
                 AddLast(element);
             }
             else
             {
-                Node<T> newNode = new(element, previousNode: existingNode, nextNode: existingNode.Next);
-                existingNode.Next.Previous = newNode;
-                existingNode.Next = newNode;
-                Size++;
-            }
-        }
-
-        private void AddBeforeNode(T element, Node<T> existingNode)
-        {
-            if (existingNode == Head)
-            {
-                AddFirst(element);
-            }
-            else
-            {
-                Node<T> newNode = new(element, previousNode: existingNode.Previous, nextNode: existingNode);
-                existingNode.Previous.Next = newNode;
-                existingNode.Previous = newNode;
+                Node<T> newNode = new(element, nodeBefore, nodeAfter);
+                nodeBefore.Next = newNode;
+                nodeAfter.Previous = newNode;
                 Size++;
             }
         }
