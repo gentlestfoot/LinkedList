@@ -73,8 +73,6 @@
         {
             EmptyListException();
             return Tail.Element;
-
-            //return Tail == null ? default(T) : (T)Tail.Element;
         }
 
         /// <summary>
@@ -85,9 +83,9 @@
         /// <exception cref="ApplicationException">List is empty</exception>
         public T SetFirst(T element)
         {
-            ///mptyListException();
+            EmptyListException();
 
-            T oldHead = GetFirst(); //ead.Element;
+            T oldHead = GetFirst();
 
             Head.Element = element;
 
@@ -280,17 +278,21 @@
         #region Milestone 3
 
         /// <summary>
-        /// 
+        /// Gets the first element mathcing the specified element
         /// </summary>
-        /// <param name="element"></param>
-        /// <returns></returns>
+        /// <param name="element">Element to find</param>
+        /// <returns>Element of node matching specified element</returns>
+        /// 
         public T Get(T element) => GetNode(element).Element;
 
         /// <summary>
-        /// 
+        /// Adds an element to the list after the specified element
         /// </summary>
-        /// <param name="element"></param>
-        /// <param name="oldElement"></param>
+        /// <param name="element">Element to add</param>
+        /// <param name="oldElement">Element to add after</param>
+        /// <exception cref="ApplicationException">List is empty</exception>
+        /// <exception cref="ApplicationException">oldElement not found in list</exception>
+        /// <exception cref="ArgumentException">oldElement cannot be null</exception>
         public void AddAfter(T element, T oldElement)
         {
             Node<T> existingNode = GetNode(oldElement);
@@ -298,16 +300,27 @@
         }
 
         /// <summary>
-        /// 
+        /// Adds an element to the list before the spefied element
         /// </summary>
-        /// <param name="element"></param>
-        /// <param name="oldElement"></param>
+        /// <param name="element">Element to add</param>
+        /// <param name="oldElement">Element to add before</param>
+        /// <exception cref="ApplicationException">List is empty</exception>
+        /// <exception cref="ApplicationException">oldElement not found in list</exception>
+        /// <exception cref="ArgumentException">oldElement cannot be null</exception>
         public void AddBefore(T element, T oldElement)
         {
             Node<T> existingNode = GetNode(oldElement);
             AddNode(existingNode.Previous, element, existingNode);
         }
 
+        /// <summary>
+        /// Removes an element from the list
+        /// </summary>
+        /// <param name="element">Element to remove</param>
+        /// <returns>The removed element</returns>
+        /// <exception cref="ApplicationException">List is empty</exception>
+        /// <exception cref="ApplicationException">Element not found in list</exception>
+        /// <exception cref="ArgumentException">Element cannot be null</exception>
         public T Remove(T element)
         {
             Node<T> target = GetNode(element);
@@ -330,6 +343,15 @@
             return target.Element;
         }
 
+        /// <summary>
+        /// Sets a new element of a node containing a specified old element
+        /// </summary>
+        /// <param name="element">New element to set</param>
+        /// <param name="oldElement">Old element to replace</param>
+        /// <returns>The replaced element</returns>
+        /// <exception cref="ApplicationException">List is empty</exception>
+        /// <exception cref="ApplicationException">oldElement not found in list</exception>
+        /// <exception cref="ArgumentException">oldElement cannot be null</exception>
         public T Set(T element, T oldElement)
         {
             Node<T> target = GetNode(oldElement);
@@ -346,12 +368,12 @@
         /// <param name="element"></param>
         public void Insert(T element)
         {
-            if(Size == 0)
-            {
-                AddFirst(element);
-            }
-            else
-            {
+            //if(Size == 0)
+            //{
+            //    AddFirst(element);
+            //}
+            //else
+            //{
                 Node<T> currentNode = Head;
 
                 while (currentNode != null && currentNode.Element.CompareTo(element) < 0)
@@ -361,40 +383,51 @@
 
                 if (currentNode == null)
                 {
-                    AddLast(element);
+                    AddLast(element); // empty or largest
                 }
                 else
                 {
                     AddNode(currentNode.Previous, element, currentNode);
                 }
-            }
+           // }
         }
 
         /// <summary>
         /// Sorts the list elements in ascending order
         /// </summary>
+        /// <exception cref="ApplicationException">List is empty</exception>
         public void SortAscending()
         {
-            bool unsorted = false;
+            Node<T> node = Head;
 
-            for(int i = 1; i < Size; i++)
+            Clear();
+
+            while (node != null)
             {
-                Node<T> currentNode = GetNode(i);
-
-                if(currentNode.Element.CompareTo(currentNode.Next.Element) > 0)
-                {
-                    T otherElement = currentNode.Element;
-                    currentNode.Element = currentNode.Next.Element;
-                    currentNode.Next.Element = otherElement;
-
-                    unsorted = true;
-                }
+                Insert(node.Element);
+                node = node.Next;
             }
 
-            if (unsorted)
-            {
-                SortAscending();
-            }
+            //bool unsorted = false;
+
+            //for(int i = 1; i < Size; i++)
+            //{
+            //    Node<T> currentNode = GetNode(i);
+
+            //    if(currentNode.Element.CompareTo(currentNode.Next.Element) > 0)
+            //    {
+            //        T otherElement = currentNode.Element;
+            //        currentNode.Element = currentNode.Next.Element;
+            //        currentNode.Next.Element = otherElement;
+
+            //        unsorted = true;
+            //    }
+            //}
+
+            //if (unsorted)
+            //{
+            //    SortAscending();
+            //}
         }
 
         #endregion
