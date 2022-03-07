@@ -106,13 +106,13 @@
                 {
                     path.Push(eastPoint);
                 }
-                else if (SpaceOrExit(northPoint))
-                {
-                    path.Push(northPoint);
-                }
                 else if (SpaceOrExit(westPoint))
                 {
                     path.Push(westPoint);
+                }
+                else if (SpaceOrExit(northPoint))
+                {
+                    path.Push(northPoint);
                 }
                 else
                 {
