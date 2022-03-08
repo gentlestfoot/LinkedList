@@ -1,14 +1,15 @@
 ﻿namespace TestLibrary
 {
-    public class Stack<T>
+    public class Queue<T>
     {
         public int Size { get; set; }
         public Node<T>? Head { get; set; }
+        public Node<T>? Tail { get; set; }
 
         /// <summary>
         /// Constructs a new empty stack.
         /// </summary>
-        public Stack()
+        public Queue()
         {
             Clear();
         }
@@ -67,7 +68,7 @@
         /// <summary>
         /// Throws an exception if the stack has a size of 0 (is empty).
         /// </summary>
-        /// <exception cref="ApplicationException">Stack is empty</exception>
+        /// <exception cref="ApplicationException">Queue is empty</exception>
         private void EmptyException()
         {
             if (Size == 0)
