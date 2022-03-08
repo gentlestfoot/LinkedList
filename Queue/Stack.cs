@@ -19,7 +19,7 @@
         /// <param name="element"></param>
         public void Push(T element)
         {
-            Head = new Node<T>(element, previousNode: Head);
+            Head = new Node<T>(element, nextNode: Head);
             Size++;
         }
 

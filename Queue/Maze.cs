@@ -208,5 +208,10 @@
         {
             return new char[]{' ', 'E'}.Contains(GetCharAtPoint(point));
         }
+
+        internal string BreadthFirstSearch()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

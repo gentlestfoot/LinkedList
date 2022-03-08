@@ -18,9 +18,21 @@
         /// Adds a new element to the top of the stack.
         /// </summary>
         /// <param name="element"></param>
-        public void Push(T element)
+        public void Enqueue(T element)
         {
-            Head = new Node<T>(element, previousNode: Head);
+            Node<T> newNode = new Node<T>(element);
+
+            if (IsEmpty())
+            {
+                Tail = newNode;
+                Head = Tail;
+            }
+            else
+            {
+                Tail.Next = newNode;
+                Tail = newNode;
+            }
+
             Size++;
         }
 
@@ -37,7 +49,7 @@
         /// Returns the element from the top node.
         /// </summary>
         /// <returns>Element from the top of the stack</returns>
-        public T Top()
+        public T Front()
         {
             EmptyException();
             return Head.Element;
@@ -47,12 +59,16 @@
         /// Removes the top node from the stack and returns the element of that node.
         /// </summary>
         /// <returns>Element from the top of the stack</returns>
-        public T Pop()
+        public T Dequeue()
         {
             EmptyException();
             Node<T> node = Head;
             Head = Head.Next;
             Size--;
+            if (Size == 0)
+            {
+                Clear();
+            }
             return node.Element;
         }
 
@@ -63,6 +79,7 @@
         {
             Size = 0;
             Head = null;
+            Tail = null;
         }
 
         /// <summary>
