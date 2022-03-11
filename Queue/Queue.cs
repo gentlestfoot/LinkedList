@@ -1,5 +1,9 @@
 ﻿namespace TestLibrary
 {
+    /// <summary>
+    /// Encapsulates a generic queue structure
+    /// </summary>
+    /// <typeparam name="T">The data type to be queued</typeparam>
     public class Queue<T>
     {
         public int Size { get; set; }
@@ -7,7 +11,7 @@
         public Node<T>? Tail { get; set; }
 
         /// <summary>
-        /// Constructs a new empty stack.
+        /// Constructs a new empty queue.
         /// </summary>
         public Queue()
         {
@@ -15,40 +19,38 @@
         }
 
         /// <summary>
-        /// Adds a new element to the top of the stack.
+        /// Adds a new element to the tail of the queue.
         /// </summary>
-        /// <param name="element"></param>
+        /// <param name="element">Element to add</param>
         public void Enqueue(T element)
         {
             Node<T> newNode = new Node<T>(element);
 
             if (IsEmpty())
             {
-                Tail = newNode;
-                Head = Tail;
+                Head = newNode;
             }
             else
             {
                 Tail.Next = newNode;
-                Tail = newNode;
             }
-
+            Tail = newNode;
             Size++;
         }
 
         /// <summary>
-        /// Returns true if the stack is empty.
+        /// Returns true if the queue is empty.
         /// </summary>
-        /// <returns>True if the stack is empty</returns>
+        /// <returns>True if the queue is empty</returns>
         public bool IsEmpty()
         {
             return Size == 0;
         }
 
         /// <summary>
-        /// Returns the element from the top node.
+        /// Returns the element from the head node.
         /// </summary>
-        /// <returns>Element from the top of the stack</returns>
+        /// <returns>Element from the head of the queue</returns>
         public T Front()
         {
             EmptyException();
@@ -56,9 +58,9 @@
         }
 
         /// <summary>
-        /// Removes the top node from the stack and returns the element of that node.
+        /// Removes the head node from the queue and returns the element of that node.
         /// </summary>
-        /// <returns>Element from the top of the stack</returns>
+        /// <returns>Element from the head of the queue</returns>
         public T Dequeue()
         {
             EmptyException();
@@ -72,8 +74,20 @@
             return node.Element;
         }
 
+        public T Dequeue()
+        {
+            if (IsEmpty()) throw new ApplicationException();
+
+            T oldElement = Front();
+            Node<T> oldHead = Head;
+            Head = Head.Next;
+            Tail = Head == null ? null : Tail;
+            Size--;
+            return oldElement;
+        }
+
         /// <summary>
-        /// Empties the stack.
+        /// Empties the queue.
         /// </summary>
         public void Clear()
         {
@@ -83,14 +97,14 @@
         }
 
         /// <summary>
-        /// Throws an exception if the stack has a size of 0 (is empty).
+        /// Throws an exception if the queue has a size of 0 (is empty).
         /// </summary>
         /// <exception cref="ApplicationException">Queue is empty</exception>
         private void EmptyException()
         {
-            if (Size == 0)
+            if (IsEmpty())
             {
-                throw new ApplicationException("Stack is emppty");
+                throw new ApplicationException("Queue is emppty");
             }
         }
     }

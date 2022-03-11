@@ -211,7 +211,41 @@
 
         internal string BreadthFirstSearch()
         {
-            throw new NotImplementedException();
+            Point currentLocation  = StartingPoint;
+            Queue<Point> explore = new Queue<Point>();
+            string message;
+
+            do
+            {
+                SetCharAtPoint(currentLocation, 'V');
+
+                Point southPoint = new Point(currentLocation.Row + 1, currentLocation.Column);
+                Point eastPoint = new Point(currentLocation.Row, currentLocation.Column + 1);
+                Point northPoint = new Point(currentLocation.Row - 1, currentLocation.Column);
+                Point westPoint = new Point(currentLocation.Row, currentLocation.Column - 1);
+
+                if (SpaceOrExit(southPoint))
+                {
+                    explore.Enqueue(southPoint);
+                }
+                if (SpaceOrExit(eastPoint))
+                {
+                    explore.Enqueue(southPoint);
+                }
+                if (SpaceOrExit(westPoint))
+                {
+                    explore.Enqueue(southPoint);
+                }
+                if (SpaceOrExit(northPoint))
+                {
+                    explore.Enqueue(southPoint);
+                }
+
+                currentLocation = explore.Dequeue();
+
+            } while (GetCharAtPoint(currentLocation) != 'E');
+
+            return $"Path to follow from Start {StartingPoint} to Exit {currentLocation}";
         }
     }
 }
