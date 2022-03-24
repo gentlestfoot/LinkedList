@@ -64,26 +64,14 @@
         public T Dequeue()
         {
             EmptyException();
-            Node<T> node = Head;
+            Node<T> old = Head;
             Head = Head.Next;
             Size--;
-            if (Size == 0)
+            if (IsEmpty())
             {
-                Clear();
+                Tail = null;
             }
-            return node.Element;
-        }
-
-        public T Dequeue()
-        {
-            if (IsEmpty()) throw new ApplicationException();
-
-            T oldElement = Front();
-            Node<T> oldHead = Head;
-            Head = Head.Next;
-            Tail = Head == null ? null : Tail;
-            Size--;
-            return oldElement;
+            return old.Element;
         }
 
         /// <summary>

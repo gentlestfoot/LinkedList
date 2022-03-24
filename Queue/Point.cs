@@ -4,6 +4,7 @@
     {
         public int Row { get; set; }
         public int Column { get; set; }
+        public Point Parent { get; set; }
 
         /// <summary>
         /// Contrstucts new Point with specified row and column properties

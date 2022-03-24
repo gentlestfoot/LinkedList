@@ -86,71 +86,6 @@
         }
 
         /// <summary>
-        /// Does a depth first search to find the path from the starting to point to the exit
-        /// </summary>
-        /// <returns>The exit path or no exit found</returns>
-        public string DepthFirstSearch()
-        {
-            path = new Stack<Point>();
-            path.Push(StartingPoint);
-            string message;
-
-            do
-            {
-                SetCharAtPoint(path.Top(), 'V');
-
-                Point southPoint = new Point(path.Top().Row +1, path.Top().Column);
-                Point eastPoint = new Point(path.Top().Row, path.Top().Column +1);
-                Point northPoint = new Point(path.Top().Row - 1, path.Top().Column);
-                Point westPoint = new Point(path.Top().Row, path.Top().Column -1);
-
-                if (SpaceOrExit(southPoint))
-                {
-                    path.Push(southPoint);
-                }
-                else if (SpaceOrExit(eastPoint))
-                {
-                    path.Push(eastPoint);
-                }
-                else if (SpaceOrExit(westPoint))
-                {
-                    path.Push(westPoint);
-                }
-                else if (SpaceOrExit(northPoint))
-                {
-                    path.Push(northPoint);
-                }
-                else
-                {
-                    path.Pop();
-                }
-
-                if (path.Size == 0)
-                {
-                    return "No exit found in maze!\n\n" + PrintMaze();
-                }
-
-            } while (GetCharAtPoint(path.Top()) != 'E' || path.Size == 0);
-
-            Point exitPoint = path.Top();
-            string steps = "";
-            Stack<Point> backup = new();
-
-
-            while (!path.IsEmpty())
-            {
-                steps = $"{path.Top()}\n{steps}";
-                SetCharAtPoint(path.Top(), '.');
-                backup.Push(path.Pop());
-            }
-
-            path = backup;
-            SetCharAtPoint(exitPoint, 'E');
-
-            return $"Path to follow from Start {StartingPoint} to Exit {exitPoint} - {path.Size} steps:\n{steps}{PrintMaze()}";
-        }
-
-        /// <summary>
         /// The path as a point stack with the starting point at the top
         /// </summary>
         /// <returns>Point stack of the path</returns>
@@ -196,7 +131,10 @@
         /// <param name="character">Char to set point to</param>
         private void SetCharAtPoint(Point point, char character)
         {
-            CharMaze[point.Row][point.Column] = character;
+            if (GetCharAtPoint(point) != 'E')
+            {
+                CharMaze[point.Row][point.Column] = character;
+            }
         }
 
         /// <summary>
@@ -209,43 +147,55 @@
             return new char[]{' ', 'E'}.Contains(GetCharAtPoint(point));
         }
 
+        /// <summary>
+        /// Does a breadth first search of the maze to find a path to the exit
+        /// </summary>
+        /// <returns>A string result of the search</returns>
         internal string BreadthFirstSearch()
         {
-            Point currentLocation  = StartingPoint;
+            path = new Stack<Point>();
             Queue<Point> explore = new Queue<Point>();
-            string message;
+            explore.Enqueue(StartingPoint);
+            Point currentLocation;
 
             do
             {
+                currentLocation = explore.Dequeue();
                 SetCharAtPoint(currentLocation, 'V');
 
                 Point southPoint = new Point(currentLocation.Row + 1, currentLocation.Column);
                 Point eastPoint = new Point(currentLocation.Row, currentLocation.Column + 1);
                 Point northPoint = new Point(currentLocation.Row - 1, currentLocation.Column);
                 Point westPoint = new Point(currentLocation.Row, currentLocation.Column - 1);
+                Point[] directions = { southPoint, eastPoint, westPoint, northPoint };
 
-                if (SpaceOrExit(southPoint))
+                foreach (Point direction in directions)
                 {
-                    explore.Enqueue(southPoint);
-                }
-                if (SpaceOrExit(eastPoint))
-                {
-                    explore.Enqueue(southPoint);
-                }
-                if (SpaceOrExit(westPoint))
-                {
-                    explore.Enqueue(southPoint);
-                }
-                if (SpaceOrExit(northPoint))
-                {
-                    explore.Enqueue(southPoint);
+                    if (SpaceOrExit(direction))
+                    {
+                        direction.Parent = currentLocation;
+                        explore.Enqueue(direction);
+                    }
                 }
 
-                currentLocation = explore.Dequeue();
-
+                if (explore.IsEmpty())
+                {
+                    return "No exit found in maze!\n\n" + PrintMaze();
+                }
             } while (GetCharAtPoint(currentLocation) != 'E');
 
-            return $"Path to follow from Start {StartingPoint} to Exit {currentLocation}";
+            string steps = "";
+            Point exitPoint = currentLocation;
+
+            while (currentLocation != null)
+            {
+                path.Push(currentLocation);
+                steps = $"{path.Top()}\n{steps}";
+                SetCharAtPoint(path.Top(), '.');
+                currentLocation = currentLocation.Parent;
+            }
+
+            return $"Path to follow from Start {StartingPoint} to Exit {exitPoint} - {path.Size} steps:\n{steps}{PrintMaze()}";
         }
     }
 }
